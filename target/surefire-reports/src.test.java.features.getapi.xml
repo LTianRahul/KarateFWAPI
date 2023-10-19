@@ -1,0 +1,18 @@
+<testsuite failures="0" name="src/test/java/features/getapi.feature" skipped="0" tests="1" time="2.152298">
+  <testcase classname="src.test.java.features.getapi" name="get user details" time="2.152298">
+    <system-out>Given url baseUrl+'/public/v1/users' ...................................... passed
+And path '5372605' ........................................................ passed
+When method GET ........................................................... passed
+Then status 200 ........................................................... passed
+* print response .......................................................... passed
+* def jsonResponse = response ............................................. passed
+* print jsonResponse ...................................................... passed
+* def actName = jsonResponse.data.name .................................... passed
+* def actId = jsonResponse.data.id ........................................ passed
+* def actEmail = jsonResponse.data.email .................................. passed
+* print actName ........................................................... passed
+* match actName == 'Sujata Kakkar' ........................................ passed
+* match actId == 5372605 .................................................. passed
+* match actEmail == 'kakkar_sujata@kassulke-abshire.example' .............. passed</system-out>
+  </testcase>
+</testsuite>

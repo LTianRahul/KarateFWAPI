@@ -1,0 +1,29 @@
+---
+version: 0.1
+runson: win
+testSuiteTimeout: 90
+autosplit: false
+retryOnFailure: true
+maxRetries: 1
+concurrency: 2
+
+env:
+  CACHE_DIR: m2_cache_dir
+  TARGET_OS: Windows 10
+
+# Dependency caching for Windows
+cacheKey: '{{ checksum "pom.xml" }}'
+cacheDirectories:
+  - $CACHE_DIR
+
+# shell: bash
+
+pre:
+  # Create the Cache directory
+  - mkdir -p m2_cache_dir
+  # Download and install packages in the CACHE_DIR.
+  # Skip execution of the tests in the pre step
+  - mvn -Dmaven.repo.local=$CACHE_DIR -Dmaven.test.skip=true clean install
+
+testSuites:
+  - mvn test
